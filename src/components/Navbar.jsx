@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IsAuthContext } from "../context/IsAuthContext";
+import Popup from "reactjs-popup";
+import Login from "../pages/Login";
 
 export default function Navbar(props) {
   const { currUser } = props;
@@ -106,11 +108,29 @@ export default function Navbar(props) {
               </button>
             </div>
           ) : (
-            <div className="flex w-full  items-center justify-end px-5 ">
-              <button className="border bg-yellow-800 text-white rounded-2xl px-4 py-1 hover:border-yellow-800 hover:text-yellow-800 hover:bg-white ">
-                <Link to="/login">Sign In</Link>
-              </button>
-            </div>
+            <Popup
+              trigger={
+                <div className="flex w-full  items-center justify-end px-5  ">
+                  <button className="border bg-yellow-800 text-white rounded-2xl px-5 py-2 w-1/2 hover:border-yellow-800 hover:text-yellow-800 hover:bg-white ">
+                    Sign In
+                  </button>
+                </div>
+              }
+              modal
+              nested
+              contentStyle={{
+                width: "100%",
+                maxWidth: "100%",
+                height: "100%",
+                margin: "0",
+                padding: "0",
+                zIndex: "2",
+                paddingTop: "50px",
+                backgroundColor: "rgba(0,0,0,0.5)",
+              }}
+            >
+              {(close) => <Login close={close} />}
+            </Popup>
           )}
         </div>
       </div>

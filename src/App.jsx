@@ -74,7 +74,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <Navbar currUser={currUser} /> */}
+        <Navbar currUser={currUser} />
         <Routes>
           <Route
             path="/blog"
